@@ -1,5 +1,7 @@
 # nut-upsd
 
+[![pipeline status](https://git.ethitter.com/docker/nut-upsd/badges/master/pipeline.svg)](https://git.ethitter.com/docker/nut-upsd/commits/master)
+
 Fully-customizable `nut` instance in a container. Many images exist, but they are
 feature-limited due to how `nut`'s configuration is handled. This image aims to
 provide all `nut` options without making too many compromises.

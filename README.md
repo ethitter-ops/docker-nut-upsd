@@ -10,8 +10,7 @@ provide all `nut` options without making too many compromises.
 files are supported. **`./config` includes sample configurations.**
 1. `docker-compose up -d`
 1. If `MODE` is set to `netserver`, `nut` will be available on the container's 
-port `3493`.
-  * Confirm using `telnet`:
+port `3493`. Confirm using `telnet`:
     ```bash
     $ telnet [CONTAINER IP] 3493
     Trying [CONTAINER IP]...

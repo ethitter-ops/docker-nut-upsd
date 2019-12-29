@@ -6,8 +6,8 @@ provide all `nut` options without making too many compromises.
 
 ## Usage
 
-1. Create necessary configurations in `./config`; both `.conf` and `.html` files
-are supported. **`./config` includes sample configurations.**
+1. Create necessary configurations in `./config`; `.conf`, `.html`, and `.users`
+files are supported. **`./config` includes sample configurations.**
 1. `docker-compose up -d`
 1. If `MODE` is set to `netserver`, `nut` will be available on the container's 
 port `3493`.

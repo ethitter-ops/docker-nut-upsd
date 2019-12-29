@@ -10,6 +10,7 @@ echo "Copying configurations from ${CONFIG_SOURCE} to ${CONFIG_DEST}..."
 
 find $CONFIG_SOURCE -name "*.conf" -exec cp '{}' $CONFIG_DEST \;
 find $CONFIG_SOURCE -name "*.html" -exec cp '{}' $CONFIG_DEST \;
+find $CONFIG_SOURCE -name "*.users" -exec cp '{}' $CONFIG_DEST \;
 
 echo "Restarting services..."
 

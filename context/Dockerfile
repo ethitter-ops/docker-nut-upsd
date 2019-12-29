@@ -7,7 +7,7 @@ RUN echo "deb http://security.debian.org/ buster/updates main" >> /etc/apt/sourc
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
-        nut \
+        nut=2.7.4-8 \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

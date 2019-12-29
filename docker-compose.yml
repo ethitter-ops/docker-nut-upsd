@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  nut:
+    image: nut-upsd:latest
+    build:
+      context: ./context
+    ports:
+      - 3493:3493
+    restart: unless-stopped
+    volumes:
+      - ./config/:/opt/nut-config

@@ -1,0 +1,49 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+
+#
+# TESTS
+#
+
+lint:dockerfile:
+  stage: test
+  image: hadolint/hadolint:latest-debian
+  before_script:
+    - mkdir ~/.config
+    - cp ./.hadolint.yaml ~/.config/hadolint.yaml
+  script:
+    - hadolint ./context/Dockerfile
+
+lint:shell-script:
+  stage: test
+  image: koalaman/shellcheck-alpine:latest
+  before_script:
+    - shellcheck -V
+  script:
+    - shellcheck ./context/entrypoint
+
+#
+# IMAGE BUILDS/PUSHES
+#
+
+build:master:
+  stage: deploy
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:latest" ./context/
+#    - docker push "$CI_REGISTRY_IMAGE:latest"
+  only:
+    - master
+  when: manual
+
+build:dev:
+  stage: deploy
+  script:
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:dev" ./context/
+#    - docker push "$CI_REGISTRY_IMAGE:dev"
+  except:
+    - master

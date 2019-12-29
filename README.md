@@ -6,7 +6,20 @@ provide all `nut` options without making too many compromises.
 
 ## Usage
 
-1. Copy any of the `./config/*.conf.sample` files to `./config/[FILENAME].conf`
-and modify as needed.
+1. Create necessary configurations in `./config`; both `.conf` and `.html` files
+are supported. **`./config` includes sample configurations.**
 1. `docker-compose up -d`
-1. `nut` will be available on the container's port `3493`.
+1. If `MODE` is set to `netserver`, `nut` will be available on the container's 
+port `3493`.
+  * Confirm using `telnet`:
+    ```bash
+    $ telnet [CONTAINER IP] 3493
+    Trying [CONTAINER IP]...
+    Connected to [CONTAINER IP].
+    Escape character is '^]'.
+    
+    $ LIST UPS
+    BEGIN LIST UPS
+    UPS test "Back-UPS XS 1500 Test"
+    END LIST UPS
+    ```

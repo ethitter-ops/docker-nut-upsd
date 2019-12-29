@@ -1,3 +1,4 @@
 .idea
 *.iml
 config/*.conf
+config/*.users

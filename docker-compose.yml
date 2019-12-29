@@ -1,22 +1,11 @@
 version: "3.7"
 services:
   nut:
-    #image: containers.ethitter.com:443/docker/s3-object-expirer:latest
+    image: nut-upsd:latest
     build:
       context: ./context
+    ports:
+      - 3493:3493
     restart: unless-stopped
-    # TODO: mount a dir
-#    secrets:
-#      - source: s3_config
-#        target: /s3_config
-#      - source: s3_bucket
-#        target: /s3_bucket
-#      - source: s3_expire_days
-#        target: /s3_expire_days
-#secrets:
-#  s3_config:
-#    file: ./config/.s3cfg
-#  s3_bucket:
-#    file: ./config/bucket
-#  s3_expire_days:
-#    file: ./config/expire_age_days
+    volumes:
+      - ./config/:/opt/nut-config

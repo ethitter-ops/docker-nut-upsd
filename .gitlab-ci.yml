@@ -25,8 +25,7 @@ lint:shell-script:
   before_script:
     - shellcheck -V
   script:
-#    - shellcheck ./context/s3-purge.sh
-    - exit 0
+    - shellcheck ./context/entrypoint
 
 #
 # IMAGE BUILDS/PUSHES
@@ -41,18 +40,10 @@ build:master:
     - master
   when: manual
 
-build:dev-amd64:
+build:dev:
   stage: deploy
   script:
-    - docker build --build-arg opts="CGO_ENABLED=0 GOARCH=amd64" --pull -t "$CI_REGISTRY_IMAGE:dev-amd64" ./context/
-#    - docker push "$CI_REGISTRY_IMAGE:dev-amd64"
-  except:
-    - master
-
-build:dev-arm7:
-  stage: deploy
-  script:
-    - docker build --build-arg opts="GOARCH=arm GOARM=7" --pull -t "$CI_REGISTRY_IMAGE:dev-arm7" ./context/
-  #    - docker push "$CI_REGISTRY_IMAGE:dev-arm7"
+    - docker build --pull -t "$CI_REGISTRY_IMAGE:dev" ./context/
+#    - docker push "$CI_REGISTRY_IMAGE:dev"
   except:
     - master

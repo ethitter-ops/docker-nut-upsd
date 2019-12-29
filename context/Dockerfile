@@ -12,6 +12,7 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# TODO: entrypoint?
-
 EXPOSE 3493
+
+COPY entrypoint /usr/local/bin/
+ENTRYPOINT ["entrypoint"]

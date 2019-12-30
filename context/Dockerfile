@@ -14,5 +14,5 @@ RUN apt-get update \
 
 EXPOSE 3493
 
-COPY ./entrypoint /usr/local/bin/
+COPY entrypoint /usr/local/bin/
 ENTRYPOINT ["entrypoint"]
